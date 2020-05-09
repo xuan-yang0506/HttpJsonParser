@@ -26,7 +26,7 @@
         app:layout_constraintLeft_toRightOf="@id/username"
         app:layout_constraintTop_toTopOf="@id/username"
         app:layout_constraintBottom_toBottomOf="@id/username"
-        android:text="See All Users"
+        android:text="See All Artists"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSongs"
