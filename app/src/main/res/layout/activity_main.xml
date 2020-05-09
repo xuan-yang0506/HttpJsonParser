@@ -7,12 +7,59 @@
     tools:context=".activity.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="@android:dimen/notification_large_icon_height"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Misaka Mikoto"
+        android:textSize="30sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSongs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/nowPlayingSection"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_song"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nowPlayingSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvSongs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/nowPlayingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Now Playing"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/albumSmall"
+            android:textAlignment="gravity"
+            android:gravity="left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <ImageView
+            android:id="@+id/albumSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:src="@android:drawable/ic_media_play"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingRight="30dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
