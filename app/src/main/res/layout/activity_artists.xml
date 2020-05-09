@@ -6,13 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".activity.ArtistsActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Artists:"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/rvArtists"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/textAllArtists"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnBackToMain"
+        android:paddingLeft="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textAllArtists"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="BACK"
+        android:id="@+id/btnBackToMain"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/rvArtists"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textAllArtists"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_artist"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
