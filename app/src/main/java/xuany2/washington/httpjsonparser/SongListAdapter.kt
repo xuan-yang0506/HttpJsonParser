@@ -24,13 +24,6 @@ class SongListAdapter(private val initialListOfSongs: MutableList<Song>): Recycl
 
     override fun getItemCount() = listOfSongs.size
 
-//    // change the list of songs to the shuffled list
-//    // notify the data set to change the list
-//    fun shuffle(shuffledList: MutableList<Song>) {
-//        listOfSongs = shuffledList
-//        notifyDataSetChanged()
-//    }
-
     override fun onBindViewHolder(holder: SongListAdapter.SongViewHolder, position: Int) {
         val song = listOfSongs[position]
         holder.bind(song)
@@ -39,7 +32,7 @@ class SongListAdapter(private val initialListOfSongs: MutableList<Song>): Recycl
     inner class SongViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val songTitle = itemView.findViewById<TextView>(R.id.songTitle)
         private val songArtist = itemView.findViewById<TextView>(R.id.songArtistName)
-        private val album: ImageView = itemView.findViewById<ImageView>(R.id.album)
+        private val album: ImageView = itemView.findViewById(R.id.album)
 
         fun bind(song: Song) {
             songTitle.text = song.title
