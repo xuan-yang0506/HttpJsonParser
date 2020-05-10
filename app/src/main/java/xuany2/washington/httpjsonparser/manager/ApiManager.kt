@@ -1,6 +1,7 @@
 package xuany2.washington.httpjsonparser.manager
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
@@ -14,9 +15,8 @@ class ApiManager(context: Context) {
 
     private val queue: RequestQueue = Volley.newRequestQueue(context)
 
-    fun fetchSongs(onFetchReady: (AllSongs) -> Unit, onFetchError: () -> Unit) {
+    fun fetchSongs(onFetchReady: (AllSongs) -> Unit, onFetchError: (() -> Unit)?) {
         val songsUrl = "https://raw.githubusercontent.com/echeeUW/codesnippets/master/musiclibrary.json"
-
         val request = StringRequest(
             Request.Method.GET, songsUrl,
             { response ->
@@ -28,9 +28,10 @@ class ApiManager(context: Context) {
             },
             {
                 // error
-                onFetchError.invoke()
+                onFetchError?.invoke()
             }
         )
+        queue.add(request)
     }
 
     fun fetchArtists(onFetchReady: (AllArtists) -> Unit, onFetchError: () -> Unit) {
@@ -50,6 +51,9 @@ class ApiManager(context: Context) {
                 onFetchError.invoke()
             }
         )
+
+        queue.add(request)
+
     }
 
     fun fetchUserInfo(onFetchready: (User) -> Unit, onFetchError: () -> Unit) {
@@ -67,6 +71,9 @@ class ApiManager(context: Context) {
                 onFetchError.invoke()
             }
         )
+
+        queue.add(request)
+
     }
 
 }

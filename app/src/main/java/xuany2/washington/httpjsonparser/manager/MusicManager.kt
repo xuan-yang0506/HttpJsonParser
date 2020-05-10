@@ -1,4 +1,6 @@
 package xuany2.washington.httpjsonparser.manager
 
-class MusicManager {
+import android.content.Context
+
+class MusicManager(context: Context){
 }
