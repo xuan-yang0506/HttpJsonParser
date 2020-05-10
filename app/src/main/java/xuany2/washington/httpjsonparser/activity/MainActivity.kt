@@ -8,16 +8,21 @@ import kotlinx.android.synthetic.main.activity_main.*
 import xuany2.washington.httpjsonparser.MusicApp
 import xuany2.washington.httpjsonparser.R
 import xuany2.washington.httpjsonparser.SongListAdapter
+import xuany2.washington.httpjsonparser.manager.ApiManager
+import xuany2.washington.httpjsonparser.manager.MusicManager
 import xuany2.washington.httpjsonparser.model.AllSongs
 import xuany2.washington.httpjsonparser.model.Song
 
 class MainActivity : AppCompatActivity() {
+    lateinit var apiManager: ApiManager
+    lateinit var musicManager: MusicManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apiManager = (application as MusicApp).apiManager
-        val musicManager = (application as MusicApp).musicManager
+        apiManager = (application as MusicApp).apiManager
+        musicManager = (application as MusicApp).musicManager
 
         var allSongs: AllSongs ?= null
         var adapter: SongListAdapter ?= null
