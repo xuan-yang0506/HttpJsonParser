@@ -16,7 +16,9 @@
         tools:text="Misaka Mikoto"
         android:textAlignment="gravity"
         android:gravity="center_vertical"
-        android:textSize="30sp"/>
+        android:textSize="20sp"
+        android:lines="1"
+        android:ellipsize="end"/>
 
     <Button
         android:id="@+id/btnSeeAllArtists"
