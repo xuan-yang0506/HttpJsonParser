@@ -15,7 +15,7 @@
 
     <TextView
         tool:text="Artist name"
-        android:id="@+id/artistName"
+        android:id="@+id/artistNameIndividual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/artistSmall"

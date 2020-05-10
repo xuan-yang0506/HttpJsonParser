@@ -37,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/username"
         app:layout_constraintTop_toTopOf="@id/username"
         app:layout_constraintBottom_toBottomOf="@id/username"
         android:text="See All Artists"/>

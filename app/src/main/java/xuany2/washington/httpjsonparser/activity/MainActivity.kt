@@ -13,7 +13,6 @@ import xuany2.washington.httpjsonparser.SongListAdapter
 import xuany2.washington.httpjsonparser.manager.ApiManager
 import xuany2.washington.httpjsonparser.manager.MusicManager
 import xuany2.washington.httpjsonparser.model.AllSongs
-import xuany2.washington.httpjsonparser.model.Song
 
 class MainActivity : AppCompatActivity() {
     lateinit var apiManager: ApiManager
@@ -29,10 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         apiManager.fetchSongs(
                 {all -> fillSongs(all)},
-                {Toast.makeText(this, "Songs fetch failed", Toast.LENGTH_SHORT).show()})
+                {Toast.makeText(this, getString(R.string.songsFetchFailed), Toast.LENGTH_SHORT).show()})
         apiManager.fetchUserInfo(
                 {user -> username.text = user.username},
-                {Toast.makeText(this, "Username fetch failed", Toast.LENGTH_SHORT).show()})
+                {Toast.makeText(this, getString(R.string.userNameFetchFailed), Toast.LENGTH_SHORT).show()})
 
         setNowplaying()
 
@@ -62,10 +61,10 @@ class MainActivity : AppCompatActivity() {
     fun setNowplaying() {
         val currentSong = (application as MusicApp).currentSong
         currentSong?.let { song ->
-            nowPlayingText.text = "${song.title} - ${song.artist}"
+            nowPlayingText.text = getString(R.string.nowPlayingText).format(song.title, song.artist)
             Picasso.get().load(song.smallImageURL).into(albumSmall)
         } ?: run {
-            nowPlayingText.text = "No song is playing"
+            nowPlayingText.text = getString(R.string.noSongPlayingText)
         }
     }
 }

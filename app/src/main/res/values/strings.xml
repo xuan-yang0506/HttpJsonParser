@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">HttpJsonParser</string>
+    <string name="userHasNose">This user has nose</string>
+    <string name="userNoNose">This user doesn\'t have nose</string>
+    <string name="platformText">Running on platform %.2f</string>
+    <string name="userInfoFetchFailed">User info fetch failed</string>
+    <string name="artistsFetchFailed">Artists fetch failed</string>
+    <string name="userNameFetchFailed">Username fetch failed</string>
+    <string name="songsFetchFailed">Songs fetch failed</string>
+    <string name="fullName">%s %s</string>
+    <string name="nowPlayingText">%s - %s</string>
+    <string name="noSongPlayingText">No song is playing</string>
 </resources>
