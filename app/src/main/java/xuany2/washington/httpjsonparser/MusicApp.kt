@@ -3,11 +3,13 @@ package xuany2.washington.httpjsonparser
 import android.app.Application
 import xuany2.washington.httpjsonparser.manager.ApiManager
 import xuany2.washington.httpjsonparser.manager.MusicManager
+import xuany2.washington.httpjsonparser.model.Song
 
 class MusicApp: Application() {
 
     lateinit var apiManager: ApiManager
     lateinit var musicManager: MusicManager
+    var currentSong: Song ?= null
 
 
     override fun onCreate() {

@@ -2,6 +2,7 @@ package xuany2.washington.httpjsonparser.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import xuany2.washington.httpjsonparser.R
 
 class ArtistsActivity : AppCompatActivity() {

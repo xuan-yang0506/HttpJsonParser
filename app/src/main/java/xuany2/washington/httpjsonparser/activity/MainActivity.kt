@@ -1,5 +1,6 @@
 package xuany2.washington.httpjsonparser.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var apiManager: ApiManager
     lateinit var musicManager: MusicManager
     private var adapter: SongListAdapter ?= null
-    private var currentSong: Song ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,15 @@ class MainActivity : AppCompatActivity() {
 
         setNowplaying()
 
+        btnSeeAllArtists.setOnClickListener {
+            val intent = Intent(this, ArtistsActivity::class.java)
+            startActivity(intent)
+        }
+
+        username.setOnClickListener {
+            val intent = Intent(this, UserInfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun fillSongs(allSongs: AllSongs) {
@@ -44,13 +53,14 @@ class MainActivity : AppCompatActivity() {
             adapter = SongListAdapter(all.songs.toMutableList())
         }
         adapter?.onSongClickListener = {song ->
-            currentSong = song
+            (application as MusicApp).currentSong = song
             setNowplaying()
         }
         rvSongs.adapter = adapter
     }
 
     fun setNowplaying() {
+        val currentSong = (application as MusicApp).currentSong
         currentSong?.let { song ->
             nowPlayingText.text = "${song.title} - ${song.artist}"
             Picasso.get().load(song.smallImageURL).into(albumSmall)
