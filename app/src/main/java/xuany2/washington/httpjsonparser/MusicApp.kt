@@ -9,7 +9,7 @@ class MusicApp: Application() {
 
     lateinit var apiManager: ApiManager
     lateinit var musicManager: MusicManager
-    var currentSong: Song ?= null
+    lateinit var username: String
 
 
     override fun onCreate() {

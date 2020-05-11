@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
                 {all -> fillSongs(all)},
                 {Toast.makeText(this, getString(R.string.songsFetchFailed), Toast.LENGTH_SHORT).show()})
         apiManager.fetchUserInfo(
-                {user -> username.text = user.username},
+                {user -> username.text = user.username
+                    (application as MusicApp).username = user.username},
                 {Toast.makeText(this, getString(R.string.userNameFetchFailed), Toast.LENGTH_SHORT).show()})
 
         setNowplaying()
@@ -44,6 +45,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, UserInfoActivity::class.java)
             startActivity(intent)
         }
+
+        nowPlayingSection.setOnClickListener {
+            if (musicManager.getCurrentSong() == null) {
+                Toast.makeText(this, "No song is currently playing!", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, NowPlayingActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setNowplaying()
     }
 
     fun fillSongs(allSongs: AllSongs) {
@@ -52,14 +67,15 @@ class MainActivity : AppCompatActivity() {
             adapter = SongListAdapter(all.songs.toMutableList())
         }
         adapter?.onSongClickListener = {song ->
-            (application as MusicApp).currentSong = song
+            musicManager.setCurrentSong(song)
             setNowplaying()
         }
         rvSongs.adapter = adapter
+        musicManager.setAllSongs(allSongs.songs)
     }
 
     fun setNowplaying() {
-        val currentSong = (application as MusicApp).currentSong
+        val currentSong = musicManager.getCurrentSong()
         currentSong?.let { song ->
             nowPlayingText.text = getString(R.string.nowPlayingText).format(song.title, song.artist)
             Picasso.get().load(song.smallImageURL).into(albumSmall)
