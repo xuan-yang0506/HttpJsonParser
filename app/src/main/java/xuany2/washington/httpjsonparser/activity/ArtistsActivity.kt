@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import kotlinx.android.synthetic.main.activity_artists.*
 import xuany2.washington.httpjsonparser.ArtistListAdapter
 import xuany2.washington.httpjsonparser.MusicApp

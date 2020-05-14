@@ -30,7 +30,7 @@ class NowPlayingActivity : AppCompatActivity() {
                                     updateSong()}
     }
 
-    fun updateSong() {
+    private fun updateSong() {
         musicManager.getCurrentSong()?.let {
             currentSong = it
         }

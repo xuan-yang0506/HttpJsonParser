@@ -4,7 +4,7 @@ import android.content.Context
 import xuany2.washington.httpjsonparser.model.Song
 import kotlin.random.Random
 
-class MusicManager(context: Context) {
+class MusicManager() {
     private var current: Song ?= null
     private var count: Int = 0
     private var allSongs: List<Song> = listOf()

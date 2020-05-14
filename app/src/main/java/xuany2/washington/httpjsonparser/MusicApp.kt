@@ -16,6 +16,6 @@ class MusicApp: Application() {
         super.onCreate()
 
         apiManager = ApiManager(this)
-        musicManager = MusicManager(this)
+        musicManager = MusicManager()
     }
 }

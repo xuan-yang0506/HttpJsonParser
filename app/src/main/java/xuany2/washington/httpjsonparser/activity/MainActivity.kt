@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         nowPlayingSection.setOnClickListener {
             if (musicManager.getCurrentSong() == null) {
-                Toast.makeText(this, "No song is currently playing!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.noSongPlayingText), Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, NowPlayingActivity::class.java)
                 startActivity(intent)
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         setNowplaying()
     }
 
-    fun fillSongs(allSongs: AllSongs) {
+    private fun fillSongs(allSongs: AllSongs) {
         processBar.visibility = View.GONE
         allSongs.let {all ->
             adapter = SongListAdapter(all.songs.toMutableList())
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         musicManager.setAllSongs(allSongs.songs)
     }
 
-    fun setNowplaying() {
+    private fun setNowplaying() {
         val currentSong = musicManager.getCurrentSong()
         currentSong?.let { song ->
             nowPlayingText.text = getString(R.string.nowPlayingText).format(song.title, song.artist)
